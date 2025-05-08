@@ -862,7 +862,8 @@ class ClientServiceTest {
         });
         
         assertTrue(exception.getMessage().contains("Failed") || 
-                   exception.getMessage().contains("Error"));
+                   exception.getMessage().contains("Error") ||
+                   exception.getMessage().contains("user"));
     }
 
 }

@@ -73,10 +73,12 @@ public class RestTemplateServiceProxy implements IServiceProxy {
 
     @Override
     public String login(String email, String password) {
-        String url = apiBaseUrl + "/api/usuario/login?email=" + email + "&password=" + password;
         try {
-            String token = restTemplate.postForObject(url, null, String.class);
-            return token;
+            // URL con parámetros en la query string
+            String url = apiBaseUrl + "/api/usuario/login?email=" + email + "&password=" + password;
+            
+            // Usar postForObject en lugar de postForEntity
+            return restTemplate.postForObject(url, null, String.class);
         } catch (HttpStatusCodeException e) {
             throw new RuntimeException("Login failed: " + e.getStatusText());
         }

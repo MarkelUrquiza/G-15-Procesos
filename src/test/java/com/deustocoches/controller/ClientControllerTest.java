@@ -138,7 +138,7 @@ public class ClientControllerTest {
                 .param("email", "juan@example.com")
                 .param("password", "wrongpassword"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"))
+                .andExpect(redirectedUrl("/login"))
                 .andExpect(flash().attributeExists("errorMessage"));
 
         verify(serviceProxy, times(1)).login("juan@example.com", "wrongpassword");
