@@ -1,0 +1,5 @@
+var enumcom_1_1deustocoches_1_1model_1_1TipoRol =
+[
+    [ "ADMIN", "enumcom_1_1deustocoches_1_1model_1_1TipoRol.html#a9391a4bcf25d00eb66dc737d28129202", null ],
+    [ "CLIENTE", "enumcom_1_1deustocoches_1_1model_1_1TipoRol.html#a197f9c97ba3f3674b01f8830c13b9926", null ]
+];
