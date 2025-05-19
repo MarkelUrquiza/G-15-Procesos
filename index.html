@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G-15-Procesos: SpringBoot + REST API + MySQL</title>
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --text-color: #333;
+      --light-gray: #f4f6f8;
+      --border-color: #ddd;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    
+    header {
+      text-align: center;
+      padding: 30px 0;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border-color);
+      background-color: var(--secondary-color);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: white;
+    }
+    
+    h2 {
+      font-size: 1.8em;
+      margin: 30px 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-color);
+      color: var(--secondary-color);
+    }
+    
+    p {
+      margin-bottom: 20px;
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent-color);
+    }
+    
+    ul, ol {
+      margin: 0 0 20px 30px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+    
+    pre {
+      background-color: var(--light-gray);
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: var(--light-gray);
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    
+    .documentation-link {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 10px 0;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .documentation-link:hover {
+      background-color: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 2px solid var(--primary-color);
+    }
+    
+    .creators {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .creator-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex: 1 1 200px;
+    }
+    
+    .creator-link {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .creator-link:hover {
+      background-color: white;
+      color: var(--primary-color);
+      text-decoration: none;
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 2px solid var(--primary-color);
+    }
+    
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .step h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .feature-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      h1 {
+        font-size: 2em;
+      }
+      
+      h2 {
+        font-size: 1.5em;
+      }
+      
+      .creators {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SpringBoot + REST API + MySQL</h1>
+    <p>Proyecto G-15-Procesos</p>
+  </header>
+
+  <h2>Descripción</h2>
+  <p>Este proyecto utiliza Spring Boot para crear una REST API y se conecta a una base de datos MySQL utilizando JPA, con una aplicación de ejemplo que maneja reservas, coches y usuarios.</p>
+  <p>El proyecto se basa en un servicio backend para gestionar reservas de coches y usuarios mediante una API REST. Usa Spring Boot y Spring Data JPA para interactuar con la base de datos MySQL.</p>
+  <p>La estructura básica de un proyecto Spring Boot se puede inicializar utilizando <a href="https://start.spring.io/">Spring Initializr</a>.</p>
+
+  <p><a class="documentation-link" href="https://markelurquiza.github.io/G-15-Procesos/site" target="_blank">Documentación</a></p>
+  <p><a class="documentation-link" href="https://markelurquiza.github.io/G-15-Procesos/site/jacoco" target="_blank">Cobertura de Tests - JaCoCo</a></p>
+
+  <h2>Documentación técnica</h2>
+    <p>
+      <a href="doxygen/html/index.html" target="_blank" class="documentation-link">
+        Ver documentación generada automáticamente (Doxygen)
+      </a>
+    </p>
+  <h2>Requisitos previos</h2>
+  <ul>
+    <li>Java 17+</li>
+    <li>Maven</li>
+    <li>MySQL</li>
+  </ul>
+
+  <h2>Lanzar la aplicación</h2>
+  <div class="step">
+    <h3>Paso 1: Compilar y descargar dependencias</h3>
+    <pre><code>mvn compile</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Paso 2: Configuración de la base de datos</h3>
+    <p>Usa el archivo <code>src/main/resources/dbsetup.sql</code> para crear la base de datos y el usuario <code>spq</code> con contraseña <code>spq</code>. Si usas la línea de comandos de MySQL:</p>
+    <pre><code>mysql –uroot -p &lt; src/main/resources/dbsetup.sql</code></pre>
+  </div>
+
+  <div class="step">
+    <h3>Paso 3: Ejecutar la aplicación</h3>
+    <pre><code>mvn spring-boot:run</code></pre>
+    <p>La aplicación estará disponible en <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</p>
+  </div>
+
+  <h2>Acceso a la aplicación</h2>
+  <p>Una vez que el programa esté en funcionamiento, puede acceder a DeustoCoches a través de:</p>
+  <p><a href="http://localhost:8080" target="_blank">http://localhost:8080</a></p>
+
+  <h2>Características</h2>
+  <div class="features-grid">
+    <div class="feature-item">Registro e inicio de sesión de usuarios.</div>
+    <div class="feature-item">Ver el listado de coches disponibles.</div>
+    <div class="feature-item">Ver el listado de todos los usuarios registrados.</div>
+    <div class="feature-item">Como cliente, ver las compras hechas.</div>
+    <div class="feature-item">Como admin, bloquear y desbloquear usuarios.</div>
+    <div class="feature-item">Hacer compras.</div>
+  </div>
+
+  <h2>Documentación (Doxygen)</h2>
+  <p>Genera la documentación del código fuente usando el archivo de configuración de Doxygen:</p>
+  <pre><code>doxygen src/main/resources/Doxyfile</code></pre>
+  <p>Abrir la documentación generada en el navegador:</p>
+  <pre><code>start docs/doxygen/html/index.html</code></pre>
+
+  <h2>Ejecución de tests</h2>
+  <ul>
+    <li><strong>Tests unitarios:</strong> <code>mvn test</code></li>
+    <li><strong>Limpiar y test con JaCoCo:</strong> <code>mvn clean test</code></li>
+    <li><strong>Pruebas de rendimiento:</strong> <code>mvn verify -Pperformance-tests</code></li>
+    <li><strong>Pruebas de integración:</strong> <code>mvn verify -Pintegration-tests</code></li>
+  </ul>
+
+  <h2>Creadores</h2>
+  <div class="creators">
+    <div class="creator-card">
+      <p>Markel Urquiza</p>
+      <a class="creator-link" href="https://github.com/MarkelUrquiza" target="_blank">MarkelUrquiza</a>
+    </div>
+    <div class="creator-card">
+      <p>Génesis Balcazar</p>
+      <a class="creator-link" href="https://github.com/gnnesis" target="_blank">gnnesis</a>
+    </div>
+    <div class="creator-card">
+      <p>Ekaitz Hernando</p>
+      <a class="creator-link" href="https://github.com/hernandoekaitz" target="_blank">hernandoekaitz</a>
+    </div>
+    <div class="creator-card">
+      <p>Maria Mardones</p>
+      <a class="creator-link" href="https://github.com/mariaMardones" target="_blank">mariaMardones</a>
+    </div>
+    <div class="creator-card">
+      <p>Ekhiotz Garay</p>
+      <a class="creator-link" href="https://github.com/EkHi04" target="_blank">EkHi04</a>
+    </div>
+  </div>
+</body>
+</html>

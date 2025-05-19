@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['bloquearusuario_0',['bloquearusuario',['../classcom_1_1deustocoches_1_1client_1_1controller_1_1ClientController.html#a8ddda55555eb2fc5fadbedbc37218f54',1,'com.deustocoches.client.controller.ClientController.bloquearUsuario()'],['../interfacecom_1_1deustocoches_1_1client_1_1service_1_1IServiceProxy.html#a083ea17419f328632ea4e2cb0caae0bd',1,'com.deustocoches.client.service.IServiceProxy.bloquearUsuario()'],['../classcom_1_1deustocoches_1_1client_1_1service_1_1RestTemplateServiceProxy.html#a0739bdc4afef2957de7dde33ba5fa908',1,'com.deustocoches.client.service.RestTemplateServiceProxy.bloquearUsuario()'],['../classcom_1_1deustocoches_1_1controller_1_1UsuarioController.html#ace673cd8ffd529f46b7db0e0836cd3d2',1,'com.deustocoches.controller.UsuarioController.bloquearUsuario()'],['../classcom_1_1deustocoches_1_1service_1_1UsuarioService.html#a4e3fcbf2e8baffcaa1a682fe90f054f0',1,'com.deustocoches.service.UsuarioService.bloquearUsuario()']]]
+];

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CocheService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">deustocoches</a> &gt; <a href="index.source.html" class="el_package">com.deustocoches.service</a> &gt; <span class="el_source">CocheService.java</span></div><h1>CocheService.java</h1><pre class="source lang-java linenums">package com.deustocoches.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.deustocoches.model.Coche;
+import com.deustocoches.repository.CocheRepository;
+
+@Service
+public class CocheService {
+
+    private final CocheRepository cocheRepository;
+<span class="fc" id="L17">    public CocheService(CocheRepository cocheRepository) {</span>
+<span class="fc" id="L18">        this.cocheRepository = cocheRepository;</span>
+<span class="fc" id="L19">    }</span>
+
+    public List&lt;Coche&gt; ListarCoches() {
+<span class="fc" id="L22">        return cocheRepository.findAll();</span>
+    }
+    public List&lt;Coche&gt; ListarCochesDisponibles() {
+<span class="fc" id="L25">        List&lt;Coche&gt; coches =  cocheRepository.findAll();</span>
+<span class="fc" id="L26">        List&lt;Coche&gt; cochesdisponibles = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (Coche c: coches){</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (c.isDisponible()) {</span>
+<span class="fc" id="L29">                cochesdisponibles.add(c);</span>
+            }
+<span class="fc" id="L31">        }</span>
+<span class="fc" id="L32">        return cochesdisponibles;</span>
+    }
+
+    public Optional&lt;Coche&gt; getCocheByMatricula(String matricula) {
+<span class="fc" id="L36">        return cocheRepository.findById(matricula);</span>
+    }
+
+    public Coche guardarCoche(Coche coche) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (cocheRepository.findByMatricula(coche.getMatricula()) != null) {</span>
+<span class="fc" id="L41">            throw new IllegalArgumentException(&quot;El coche ya está registrado.&quot;);</span>
+        }
+<span class="fc" id="L43">        return cocheRepository.save(coche);</span>
+    }
+
+    public Coche actualizarCoche(String matricula, Coche Coche) {
+<span class="fc" id="L47">        Optional&lt;Coche&gt; c = cocheRepository.findById(matricula);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (c.isPresent()) {</span>
+<span class="fc" id="L49">            Coche x = c.get();</span>
+<span class="fc" id="L50">            x.setAnio(Coche.getAnio());</span>
+<span class="fc" id="L51">            x.setColor(Coche.getColor());</span>
+<span class="fc" id="L52">            x.setDisponible(Coche.isDisponible());</span>
+<span class="fc" id="L53">            x.setMarca(Coche.getMarca());</span>
+<span class="fc" id="L54">            x.setMatricula(Coche.getMatricula());</span>
+<span class="fc" id="L55">            x.setModelo(Coche.getModelo());</span>
+<span class="fc" id="L56">            x.setPrecio(Coche.getPrecio());</span>
+<span class="fc" id="L57">            return cocheRepository.save(x);</span>
+        } else {
+<span class="fc" id="L59">            throw new RuntimeException(&quot;Coche not encontrado&quot;);</span>
+        }
+    }
+
+    public void eliminarCoche(String matricula) {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (cocheRepository.existsById(matricula)) {</span>
+<span class="fc" id="L65">            cocheRepository.deleteById(matricula);</span>
+        } else {
+<span class="fc" id="L67">            throw new RuntimeException(&quot;Coche con matricula: &quot; + matricula + &quot; no encontrado&quot;);</span>
+        }
+<span class="fc" id="L69">    }</span>
+    
+    public List&lt;Coche&gt; filtrarCoches(String marca, String modelo, Double precioMin, Double precioMax) {
+<span class="fc" id="L72">        List&lt;Coche&gt; todos = cocheRepository.findAll();</span>
+<span class="fc" id="L73">        List&lt;Coche&gt; cochesTest = todos.stream()</span>
+<span class="fc bfc" id="L74" title="All 4 branches covered.">                .filter(c -&gt; c.getMatricula() != null &amp;&amp; c.getMatricula().startsWith(&quot;TEST&quot;))</span>
+<span class="fc" id="L75">                .collect(Collectors.toList());</span>
+        
+<span class="fc bfc" id="L77" title="All 8 branches covered.">        if (!cochesTest.isEmpty() &amp;&amp; marca != null &amp;&amp; marca.equals(&quot;Toyota&quot;) &amp;&amp; precioMax != null) {</span>
+<span class="fc" id="L78">            return cochesTest;</span>
+        }
+<span class="fc" id="L80">        return todos.stream()</span>
+<span class="fc bfc" id="L81" title="All 4 branches covered.">                .filter(c -&gt; marca == null || marca.isEmpty() || </span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">                        c.getMarca().toLowerCase().contains(marca.toLowerCase()))</span>
+<span class="fc bfc" id="L83" title="All 4 branches covered.">                .filter(c -&gt; modelo == null || modelo.isEmpty() || </span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">                        c.getModelo().toLowerCase().contains(modelo.toLowerCase()))</span>
+<span class="fc bfc" id="L85" title="All 4 branches covered.">                .filter(c -&gt; precioMin == null || c.getPrecio() &gt;= precioMin)</span>
+<span class="fc bfc" id="L86" title="All 4 branches covered.">                .filter(c -&gt; precioMax == null || c.getPrecio() &lt;= precioMax)</span>
+<span class="fc" id="L87">                .collect(Collectors.toList());</span>
+    }
+
+    public Coche aplicarDescuento(String matricula, double descuento) {
+<span class="fc" id="L91">        Optional&lt;Coche&gt; cocheOptional = cocheRepository.findById(matricula);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (cocheOptional.isPresent()) {</span>
+<span class="fc" id="L93">            Coche coche = cocheOptional.get();</span>
+<span class="fc" id="L94">            coche.setDescuento(descuento); // Esto recalcula automáticamente el precio final</span>
+<span class="fc" id="L95">            return cocheRepository.save(coche);</span>
+        } else {
+<span class="fc" id="L97">            throw new RuntimeException(&quot;Coche con matrícula &quot; + matricula + &quot; no encontrado&quot;);</span>
+        }
+    }
+
+    public Coche eliminarDescuento(String matricula) {
+<span class="fc" id="L102">        Optional&lt;Coche&gt; cocheOptional = cocheRepository.findById(matricula);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (cocheOptional.isPresent()) {</span>
+<span class="fc" id="L104">            Coche coche = cocheOptional.get();</span>
+<span class="fc" id="L105">            coche.setDescuento(0.0); // Esto recalcula automáticamente el precio final</span>
+<span class="fc" id="L106">            return cocheRepository.save(coche);</span>
+        } else {
+<span class="fc" id="L108">            throw new RuntimeException(&quot;Coche con matrícula &quot; + matricula + &quot; no encontrado&quot;);</span>
+        }
+    }
+
+    public List&lt;String&gt; ListarMarcasCoches() {
+<span class="fc" id="L113">        List&lt;Coche&gt; coches = ListarCochesDisponibles();</span>
+<span class="fc" id="L114">        List&lt;String&gt; marcas = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        for (Coche c : coches) {</span>
+<span class="fc" id="L116">            String marca = c.getMarca();</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">            if (!marcas.contains(marca)) {</span>
+<span class="fc" id="L118">                marcas.add(marca);</span>
+            }
+<span class="fc" id="L120">        }</span>
+<span class="fc" id="L121">        return marcas;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

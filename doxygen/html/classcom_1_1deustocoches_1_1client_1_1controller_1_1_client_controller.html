@@ -1,0 +1,935 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeustoCoches: Referencia de la clase com.deustocoches.client.controller.ClientController</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">DeustoCoches<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Sistema de gestión de reservas de coches</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classcom_1_1deustocoches_1_1client_1_1controller_1_1_client_controller.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pri-attribs">Atributos privados</a> &#124;
+<a href="classcom_1_1deustocoches_1_1client_1_1controller_1_1_client_controller-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle"><div class="title">Referencia de la clase com.deustocoches.client.controller.ClientController</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a78a0db8705adfbf6917cace38410bb61" id="r_a78a0db8705adfbf6917cace38410bb61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78a0db8705adfbf6917cace38410bb61">addAttributes</a> (Model model, HttpServletRequest request)</td></tr>
+<tr class="separator:a78a0db8705adfbf6917cace38410bb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b0da15143ba177efded863071b4527e" id="r_a0b0da15143ba177efded863071b4527e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b0da15143ba177efded863071b4527e">home</a> ()</td></tr>
+<tr class="separator:a0b0da15143ba177efded863071b4527e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d51a278d73abeac61cd08c2e36198e" id="r_a59d51a278d73abeac61cd08c2e36198e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59d51a278d73abeac61cd08c2e36198e">showLoginPage</a> ()</td></tr>
+<tr class="separator:a59d51a278d73abeac61cd08c2e36198e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ddfc798114027133282219adfaebc35" id="r_a7ddfc798114027133282219adfaebc35"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ddfc798114027133282219adfaebc35">performLogin</a> (@RequestParam String email, @RequestParam String password, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a7ddfc798114027133282219adfaebc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2579cb4fa806cf493fc6a90ab3edd396" id="r_a2579cb4fa806cf493fc6a90ab3edd396"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2579cb4fa806cf493fc6a90ab3edd396">performLogout</a> (RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a2579cb4fa806cf493fc6a90ab3edd396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f0c62601aaddb4260a01f5196440ba4" id="r_a1f0c62601aaddb4260a01f5196440ba4"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f0c62601aaddb4260a01f5196440ba4">showRegisterPage</a> ()</td></tr>
+<tr class="separator:a1f0c62601aaddb4260a01f5196440ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ba6caa32d647fea2d6a675886cb331" id="r_a45ba6caa32d647fea2d6a675886cb331"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45ba6caa32d647fea2d6a675886cb331">registrarUsuario</a> (@ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_usuario.html">Usuario</a> usuario, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a45ba6caa32d647fea2d6a675886cb331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6fc47ba4a322df7c37c93db768c9ba" id="r_aea6fc47ba4a322df7c37c93db768c9ba"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea6fc47ba4a322df7c37c93db768c9ba">listarCochesDisponibles</a> (Model model)</td></tr>
+<tr class="separator:aea6fc47ba4a322df7c37c93db768c9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac38841c413ff5b1e236234ec089dd432" id="r_ac38841c413ff5b1e236234ec089dd432"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac38841c413ff5b1e236234ec089dd432">listarUsuarios</a> (Model model)</td></tr>
+<tr class="separator:ac38841c413ff5b1e236234ec089dd432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab13244a74320d0ad807adc210af6ac1d" id="r_ab13244a74320d0ad807adc210af6ac1d"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab13244a74320d0ad807adc210af6ac1d">eliminarUsuario</a> (@RequestParam(&quot;email&quot;) String email, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:ab13244a74320d0ad807adc210af6ac1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae081302f4c450490f972cadb1bf60649" id="r_ae081302f4c450490f972cadb1bf60649"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae081302f4c450490f972cadb1bf60649">listarCoches</a> (Model model)</td></tr>
+<tr class="separator:ae081302f4c450490f972cadb1bf60649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d08d04ef762dd37f47f177e673cd469" id="r_a6d08d04ef762dd37f47f177e673cd469"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d08d04ef762dd37f47f177e673cd469">getCocheByMatricula</a> (@RequestParam(&quot;matricula&quot;) String matricula, Model model)</td></tr>
+<tr class="separator:a6d08d04ef762dd37f47f177e673cd469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac555367b04c9609fe957ce1b981de9bd" id="r_ac555367b04c9609fe957ce1b981de9bd"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac555367b04c9609fe957ce1b981de9bd">crearCoche</a> (@ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_coche.html">Coche</a> coche, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:ac555367b04c9609fe957ce1b981de9bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4398b66e3a4705db8b90d266b97ac86" id="r_af4398b66e3a4705db8b90d266b97ac86"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4398b66e3a4705db8b90d266b97ac86">actualizarCoche</a> (@RequestParam(&quot;matricula&quot;) String matricula, @ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_coche.html">Coche</a> coche, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:af4398b66e3a4705db8b90d266b97ac86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35bcc96e4ac6f57234f6fb5df6c898e9" id="r_a35bcc96e4ac6f57234f6fb5df6c898e9"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35bcc96e4ac6f57234f6fb5df6c898e9">eliminarCoche</a> (@RequestParam(&quot;matricula&quot;) String matricula, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a35bcc96e4ac6f57234f6fb5df6c898e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822d31d9903a253e694ab86837207dfb" id="r_a822d31d9903a253e694ab86837207dfb"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a822d31d9903a253e694ab86837207dfb">filtrarCoches</a> ( @RequestParam(required=false) String marca, @RequestParam(required=false) String modelo, @RequestParam(required=false) Double precioMin, @RequestParam(required=false) Double precioMax, Model model)</td></tr>
+<tr class="separator:a822d31d9903a253e694ab86837207dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad66a9804ab3a0e696ce6e2dcf2dc2c36" id="r_ad66a9804ab3a0e696ce6e2dcf2dc2c36"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad66a9804ab3a0e696ce6e2dcf2dc2c36">aplicarDescuento</a> ( @RequestParam(&quot;matricula&quot;) String matricula, @RequestParam(&quot;descuento&quot;) double descuento, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:ad66a9804ab3a0e696ce6e2dcf2dc2c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d435887043c6b29fc80c72fa1d8535" id="r_a83d435887043c6b29fc80c72fa1d8535"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83d435887043c6b29fc80c72fa1d8535">eliminarDescuento</a> ( @RequestParam(&quot;matricula&quot;) String matricula, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a83d435887043c6b29fc80c72fa1d8535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ddda55555eb2fc5fadbedbc37218f54" id="r_a8ddda55555eb2fc5fadbedbc37218f54"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ddda55555eb2fc5fadbedbc37218f54">bloquearUsuario</a> (@RequestParam(&quot;email&quot;) String email, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a8ddda55555eb2fc5fadbedbc37218f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f10bc119de134875dfbf3cbc8a49a3" id="r_a11f10bc119de134875dfbf3cbc8a49a3"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11f10bc119de134875dfbf3cbc8a49a3">desbloquearUsuario</a> (@RequestParam(&quot;email&quot;) String email, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a11f10bc119de134875dfbf3cbc8a49a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa08c7f10e24d2a2971167003601087" id="r_a9aa08c7f10e24d2a2971167003601087"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9aa08c7f10e24d2a2971167003601087">hacerPedido</a> (@RequestParam(&quot;email&quot;) String email, @RequestParam(&quot;estado&quot;) String estado, @RequestParam(&quot;matricula&quot;) String matricula, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a9aa08c7f10e24d2a2971167003601087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2504b03deed0a0eddfeec89d7cb482b" id="r_aa2504b03deed0a0eddfeec89d7cb482b"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2504b03deed0a0eddfeec89d7cb482b">mostrarReservasConfirmadasPorUsuario</a> ( @RequestParam(value=&quot;email&quot;, required=false) String email, Model model)</td></tr>
+<tr class="separator:aa2504b03deed0a0eddfeec89d7cb482b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca8c22523261a5fb05a7fc3093992215" id="r_aca8c22523261a5fb05a7fc3093992215"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca8c22523261a5fb05a7fc3093992215">mostrarReservasPendientesPorUsuario</a> ( @RequestParam(value=&quot;email&quot;, required=false) String email, Model model)</td></tr>
+<tr class="separator:aca8c22523261a5fb05a7fc3093992215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee7d1ac57c30079a95d850f29eab6ae8" id="r_aee7d1ac57c30079a95d850f29eab6ae8"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee7d1ac57c30079a95d850f29eab6ae8">mostrarReservasCompradas</a> (Model model)</td></tr>
+<tr class="separator:aee7d1ac57c30079a95d850f29eab6ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a308329cc3badcd42acb259b5c589ca07" id="r_a308329cc3badcd42acb259b5c589ca07"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a308329cc3badcd42acb259b5c589ca07">mostrarReservasPendientes</a> (Model model)</td></tr>
+<tr class="separator:a308329cc3badcd42acb259b5c589ca07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01cd2e8692b72553b8adbee1d4cc7f17" id="r_a01cd2e8692b72553b8adbee1d4cc7f17"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01cd2e8692b72553b8adbee1d4cc7f17">eliminarReserva</a> (@PathVariable Integer id, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:a01cd2e8692b72553b8adbee1d4cc7f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade86595fa4a00e20adc15a4ead59ae72" id="r_ade86595fa4a00e20adc15a4ead59ae72"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade86595fa4a00e20adc15a4ead59ae72">actualizarReserva</a> (@PathVariable Integer id, @ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_reserva.html">Reserva</a> reserva, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:ade86595fa4a00e20adc15a4ead59ae72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1597bbd83657c822c060f21bd0238bf" id="r_ab1597bbd83657c822c060f21bd0238bf"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1597bbd83657c822c060f21bd0238bf">crearAdmin</a> (@RequestParam(&quot;email&quot;) String email, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:ab1597bbd83657c822c060f21bd0238bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac276344fb898ef5fcc765359c504e243" id="r_ac276344fb898ef5fcc765359c504e243"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac276344fb898ef5fcc765359c504e243">eliminarAdmin</a> (@RequestParam(&quot;email&quot;) String email, RedirectAttributes redirectAttributes)</td></tr>
+<tr class="separator:ac276344fb898ef5fcc765359c504e243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eda243eb625f1672acf0735d50aee9f" id="r_a2eda243eb625f1672acf0735d50aee9f"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2eda243eb625f1672acf0735d50aee9f">filtrarReservasPorRangoFechas</a> ( @RequestParam(&quot;desde&quot;) String desde, @RequestParam(&quot;hasta&quot;) String hasta, Model model)</td></tr>
+<tr class="separator:a2eda243eb625f1672acf0735d50aee9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atributos privados</h2></td></tr>
+<tr class="memitem:a301af86cce612e66757a8f98319dcc26" id="r_a301af86cce612e66757a8f98319dcc26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1deustocoches_1_1client_1_1service_1_1_rest_template_service_proxy.html">RestTemplateServiceProxy</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a301af86cce612e66757a8f98319dcc26">serviceProxy</a></td></tr>
+<tr class="separator:a301af86cce612e66757a8f98319dcc26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c6653fd05b1450efcd9ba495ef5ee5" id="r_a15c6653fd05b1450efcd9ba495ef5ee5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15c6653fd05b1450efcd9ba495ef5ee5">token</a></td></tr>
+<tr class="separator:a15c6653fd05b1450efcd9ba495ef5ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb0f433ed3726154f9b587ab603fffd" id="r_affb0f433ed3726154f9b587ab603fffd"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affb0f433ed3726154f9b587ab603fffd">currentUserEmail</a></td></tr>
+<tr class="separator:affb0f433ed3726154f9b587ab603fffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67d7c7f6669993d38803403f915be07" id="r_aa67d7c7f6669993d38803403f915be07"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa67d7c7f6669993d38803403f915be07">selectedEstado</a> = &quot;PENDIENTE&quot;</td></tr>
+<tr class="separator:aa67d7c7f6669993d38803403f915be07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="af4398b66e3a4705db8b90d266b97ac86" name="af4398b66e3a4705db8b90d266b97ac86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4398b66e3a4705db8b90d266b97ac86">&#9670;&#160;</a></span>actualizarCoche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.actualizarCoche </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;matricula&quot;) String</td>          <td class="paramname"><span class="paramname"><em>matricula</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_coche.html">Coche</a></td>          <td class="paramname"><span class="paramname"><em>coche</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ade86595fa4a00e20adc15a4ead59ae72" name="ade86595fa4a00e20adc15a4ead59ae72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade86595fa4a00e20adc15a4ead59ae72">&#9670;&#160;</a></span>actualizarReserva()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.actualizarReserva </td>
+          <td>(</td>
+          <td class="paramtype">@PathVariable Integer</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_reserva.html">Reserva</a></td>          <td class="paramname"><span class="paramname"><em>reserva</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a78a0db8705adfbf6917cace38410bb61" name="a78a0db8705adfbf6917cace38410bb61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78a0db8705adfbf6917cace38410bb61">&#9670;&#160;</a></span>addAttributes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.deustocoches.client.controller.ClientController.addAttributes </td>
+          <td>(</td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HttpServletRequest</td>          <td class="paramname"><span class="paramname"><em>request</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad66a9804ab3a0e696ce6e2dcf2dc2c36" name="ad66a9804ab3a0e696ce6e2dcf2dc2c36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad66a9804ab3a0e696ce6e2dcf2dc2c36">&#9670;&#160;</a></span>aplicarDescuento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.aplicarDescuento </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;matricula&quot;) String</td>          <td class="paramname"><span class="paramname"><em>matricula</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(&quot;descuento&quot;) double</td>          <td class="paramname"><span class="paramname"><em>descuento</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ddda55555eb2fc5fadbedbc37218f54" name="a8ddda55555eb2fc5fadbedbc37218f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ddda55555eb2fc5fadbedbc37218f54">&#9670;&#160;</a></span>bloquearUsuario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.bloquearUsuario </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;email&quot;) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1597bbd83657c822c060f21bd0238bf" name="ab1597bbd83657c822c060f21bd0238bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1597bbd83657c822c060f21bd0238bf">&#9670;&#160;</a></span>crearAdmin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.crearAdmin </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;email&quot;) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac555367b04c9609fe957ce1b981de9bd" name="ac555367b04c9609fe957ce1b981de9bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac555367b04c9609fe957ce1b981de9bd">&#9670;&#160;</a></span>crearCoche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.crearCoche </td>
+          <td>(</td>
+          <td class="paramtype">@ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_coche.html">Coche</a></td>          <td class="paramname"><span class="paramname"><em>coche</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a11f10bc119de134875dfbf3cbc8a49a3" name="a11f10bc119de134875dfbf3cbc8a49a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f10bc119de134875dfbf3cbc8a49a3">&#9670;&#160;</a></span>desbloquearUsuario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.desbloquearUsuario </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;email&quot;) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac276344fb898ef5fcc765359c504e243" name="ac276344fb898ef5fcc765359c504e243"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac276344fb898ef5fcc765359c504e243">&#9670;&#160;</a></span>eliminarAdmin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.eliminarAdmin </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;email&quot;) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35bcc96e4ac6f57234f6fb5df6c898e9" name="a35bcc96e4ac6f57234f6fb5df6c898e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35bcc96e4ac6f57234f6fb5df6c898e9">&#9670;&#160;</a></span>eliminarCoche()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.eliminarCoche </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;matricula&quot;) String</td>          <td class="paramname"><span class="paramname"><em>matricula</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83d435887043c6b29fc80c72fa1d8535" name="a83d435887043c6b29fc80c72fa1d8535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83d435887043c6b29fc80c72fa1d8535">&#9670;&#160;</a></span>eliminarDescuento()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.eliminarDescuento </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;matricula&quot;) String</td>          <td class="paramname"><span class="paramname"><em>matricula</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01cd2e8692b72553b8adbee1d4cc7f17" name="a01cd2e8692b72553b8adbee1d4cc7f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01cd2e8692b72553b8adbee1d4cc7f17">&#9670;&#160;</a></span>eliminarReserva()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.eliminarReserva </td>
+          <td>(</td>
+          <td class="paramtype">@PathVariable Integer</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab13244a74320d0ad807adc210af6ac1d" name="ab13244a74320d0ad807adc210af6ac1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab13244a74320d0ad807adc210af6ac1d">&#9670;&#160;</a></span>eliminarUsuario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.eliminarUsuario </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;email&quot;) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a822d31d9903a253e694ab86837207dfb" name="a822d31d9903a253e694ab86837207dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a822d31d9903a253e694ab86837207dfb">&#9670;&#160;</a></span>filtrarCoches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.filtrarCoches </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(required=false) String</td>          <td class="paramname"><span class="paramname"><em>marca</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(required=false) String</td>          <td class="paramname"><span class="paramname"><em>modelo</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(required=false) Double</td>          <td class="paramname"><span class="paramname"><em>precioMin</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(required=false) Double</td>          <td class="paramname"><span class="paramname"><em>precioMax</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2eda243eb625f1672acf0735d50aee9f" name="a2eda243eb625f1672acf0735d50aee9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eda243eb625f1672acf0735d50aee9f">&#9670;&#160;</a></span>filtrarReservasPorRangoFechas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.filtrarReservasPorRangoFechas </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;desde&quot;) String</td>          <td class="paramname"><span class="paramname"><em>desde</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(&quot;hasta&quot;) String</td>          <td class="paramname"><span class="paramname"><em>hasta</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6d08d04ef762dd37f47f177e673cd469" name="a6d08d04ef762dd37f47f177e673cd469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d08d04ef762dd37f47f177e673cd469">&#9670;&#160;</a></span>getCocheByMatricula()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.getCocheByMatricula </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;matricula&quot;) String</td>          <td class="paramname"><span class="paramname"><em>matricula</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9aa08c7f10e24d2a2971167003601087" name="a9aa08c7f10e24d2a2971167003601087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa08c7f10e24d2a2971167003601087">&#9670;&#160;</a></span>hacerPedido()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.hacerPedido </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(&quot;email&quot;) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(&quot;estado&quot;) String</td>          <td class="paramname"><span class="paramname"><em>estado</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam(&quot;matricula&quot;) String</td>          <td class="paramname"><span class="paramname"><em>matricula</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b0da15143ba177efded863071b4527e" name="a0b0da15143ba177efded863071b4527e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b0da15143ba177efded863071b4527e">&#9670;&#160;</a></span>home()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.home </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae081302f4c450490f972cadb1bf60649" name="ae081302f4c450490f972cadb1bf60649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae081302f4c450490f972cadb1bf60649">&#9670;&#160;</a></span>listarCoches()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.listarCoches </td>
+          <td>(</td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea6fc47ba4a322df7c37c93db768c9ba" name="aea6fc47ba4a322df7c37c93db768c9ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6fc47ba4a322df7c37c93db768c9ba">&#9670;&#160;</a></span>listarCochesDisponibles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.listarCochesDisponibles </td>
+          <td>(</td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac38841c413ff5b1e236234ec089dd432" name="ac38841c413ff5b1e236234ec089dd432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac38841c413ff5b1e236234ec089dd432">&#9670;&#160;</a></span>listarUsuarios()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.listarUsuarios </td>
+          <td>(</td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aee7d1ac57c30079a95d850f29eab6ae8" name="aee7d1ac57c30079a95d850f29eab6ae8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee7d1ac57c30079a95d850f29eab6ae8">&#9670;&#160;</a></span>mostrarReservasCompradas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.mostrarReservasCompradas </td>
+          <td>(</td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2504b03deed0a0eddfeec89d7cb482b" name="aa2504b03deed0a0eddfeec89d7cb482b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2504b03deed0a0eddfeec89d7cb482b">&#9670;&#160;</a></span>mostrarReservasConfirmadasPorUsuario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.mostrarReservasConfirmadasPorUsuario </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(value=&quot;email&quot;, required=false) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a308329cc3badcd42acb259b5c589ca07" name="a308329cc3badcd42acb259b5c589ca07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a308329cc3badcd42acb259b5c589ca07">&#9670;&#160;</a></span>mostrarReservasPendientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.mostrarReservasPendientes </td>
+          <td>(</td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca8c22523261a5fb05a7fc3093992215" name="aca8c22523261a5fb05a7fc3093992215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca8c22523261a5fb05a7fc3093992215">&#9670;&#160;</a></span>mostrarReservasPendientesPorUsuario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.mostrarReservasPendientesPorUsuario </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam(value=&quot;email&quot;, required=false) String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Model</td>          <td class="paramname"><span class="paramname"><em>model</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7ddfc798114027133282219adfaebc35" name="a7ddfc798114027133282219adfaebc35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ddfc798114027133282219adfaebc35">&#9670;&#160;</a></span>performLogin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.performLogin </td>
+          <td>(</td>
+          <td class="paramtype">@RequestParam String</td>          <td class="paramname"><span class="paramname"><em>email</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@RequestParam String</td>          <td class="paramname"><span class="paramname"><em>password</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2579cb4fa806cf493fc6a90ab3edd396" name="a2579cb4fa806cf493fc6a90ab3edd396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2579cb4fa806cf493fc6a90ab3edd396">&#9670;&#160;</a></span>performLogout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.performLogout </td>
+          <td>(</td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45ba6caa32d647fea2d6a675886cb331" name="a45ba6caa32d647fea2d6a675886cb331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ba6caa32d647fea2d6a675886cb331">&#9670;&#160;</a></span>registrarUsuario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.registrarUsuario </td>
+          <td>(</td>
+          <td class="paramtype">@ModelAttribute <a class="el" href="classcom_1_1deustocoches_1_1model_1_1_usuario.html">Usuario</a></td>          <td class="paramname"><span class="paramname"><em>usuario</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RedirectAttributes</td>          <td class="paramname"><span class="paramname"><em>redirectAttributes</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a59d51a278d73abeac61cd08c2e36198e" name="a59d51a278d73abeac61cd08c2e36198e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d51a278d73abeac61cd08c2e36198e">&#9670;&#160;</a></span>showLoginPage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.showLoginPage </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f0c62601aaddb4260a01f5196440ba4" name="a1f0c62601aaddb4260a01f5196440ba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f0c62601aaddb4260a01f5196440ba4">&#9670;&#160;</a></span>showRegisterPage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.showRegisterPage </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de datos miembro</h2>
+<a id="affb0f433ed3726154f9b587ab603fffd" name="affb0f433ed3726154f9b587ab603fffd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb0f433ed3726154f9b587ab603fffd">&#9670;&#160;</a></span>currentUserEmail</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.currentUserEmail</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa67d7c7f6669993d38803403f915be07" name="aa67d7c7f6669993d38803403f915be07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa67d7c7f6669993d38803403f915be07">&#9670;&#160;</a></span>selectedEstado</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.selectedEstado = &quot;PENDIENTE&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a301af86cce612e66757a8f98319dcc26" name="a301af86cce612e66757a8f98319dcc26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a301af86cce612e66757a8f98319dcc26">&#9670;&#160;</a></span>serviceProxy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcom_1_1deustocoches_1_1client_1_1service_1_1_rest_template_service_proxy.html">RestTemplateServiceProxy</a> com.deustocoches.client.controller.ClientController.serviceProxy</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15c6653fd05b1450efcd9ba495ef5ee5" name="a15c6653fd05b1450efcd9ba495ef5ee5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15c6653fd05b1450efcd9ba495ef5ee5">&#9670;&#160;</a></span>token</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">String com.deustocoches.client.controller.ClientController.token</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>src/main/java/com/deustocoches/client/controller/<a class="el" href="_client_controller_8java.html">ClientController.java</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>com</b></li><li class="navelem"><a class="el" href="namespacecom_1_1deustocoches.html">deustocoches</a></li><li class="navelem"><b>client</b></li><li class="navelem"><a class="el" href="namespacecom_1_1deustocoches_1_1client_1_1controller.html">controller</a></li><li class="navelem"><a class="el" href="classcom_1_1deustocoches_1_1client_1_1controller_1_1_client_controller.html">ClientController</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">deustocoches</a> &gt; <a href="index.source.html" class="el_package">com.deustocoches.controller</a> &gt; <span class="el_source">UsuarioController.java</span></div><h1>UsuarioController.java</h1><pre class="source lang-java linenums">package com.deustocoches.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.deustocoches.model.Usuario;
+import com.deustocoches.service.UsuarioService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
+
+@RestController
+@RequestMapping(&quot;/api/usuario&quot;)
+@Tag(name = &quot;Usuario Controller&quot;, description = &quot;API para manejar los usuarios&quot;)
+<span class="fc" id="L20">public class UsuarioController {</span>
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @GetMapping
+    public List&lt;Usuario&gt; listarUsuariosResgistrados() {
+<span class="fc" id="L27">        return usuarioService.listarUsuariosResgistrados();</span>
+    }
+
+    @GetMapping(&quot;/buscar&quot;)
+    public ResponseEntity&lt;Usuario&gt; getUsuarioByEmail(@RequestParam(&quot;email&quot;) String email) {
+<span class="fc" id="L32">        Optional&lt;Usuario&gt; usuario = usuarioService.getUsuarioByEmail(email);</span>
+<span class="fc" id="L33">        return usuario.map(ResponseEntity::ok).orElseGet(() -&gt; ResponseEntity.notFound().build());</span>
+    }
+
+    @DeleteMapping(&quot;/eliminar&quot;)
+    public ResponseEntity&lt;Void&gt; eliminarUsuario(@RequestParam(&quot;email&quot;) String email) {
+<span class="fc" id="L38">        Optional&lt;Usuario&gt; usuario = usuarioService.getUsuarioByEmail(email);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (usuario.isPresent()) {</span>
+<span class="fc" id="L40">            usuarioService.eliminarUsuario(email);</span>
+<span class="fc" id="L41">            return ResponseEntity.noContent().build();</span>
+        } else {
+<span class="fc" id="L43">            return ResponseEntity.notFound().build();</span>
+        }
+    }
+
+    @PostMapping(&quot;/registrar&quot;)
+    public ResponseEntity&lt;Usuario&gt; RegistrarUsuario(@RequestBody Usuario usuario) {
+        try {
+<span class="fc" id="L50">            Usuario usuarioNuevo = usuarioService.registrarUsuario(usuario);</span>
+<span class="fc" id="L51">            return ResponseEntity.ok(usuarioNuevo);</span>
+<span class="fc" id="L52">        } catch (Exception e) {</span>
+<span class="fc" id="L53">            return ResponseEntity.badRequest().build();</span>
+        }
+    }
+    @Operation(
+            summary = &quot;Iniciar sesión&quot;,
+            description = &quot;Permite a un usuario iniciar sesión verificando si tiene un token asignado. Si no, genera uno nuevo.&quot;,
+            responses = {
+                    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;OK: Inicio de sesión exitoso, se devuelve el token.&quot;),
+                    @ApiResponse(responseCode = &quot;400&quot;, description = &quot;Bad Request: Usuario no registrado o datos incorrectos.&quot;),
+                    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;Unauthorized: Invalid credentials, login failed&quot;),
+                    @ApiResponse(responseCode = &quot;500&quot;, description = &quot;Internal Server Error: Error interno en el servidor.&quot;)
+            }
+    )
+    @PostMapping(&quot;/login&quot;)
+    public ResponseEntity&lt;String&gt; iniciarSesion(@RequestParam(&quot;email&quot;) String email, @RequestParam(&quot;password&quot;) String password) {
+        try {
+<span class="fc" id="L69">        	Optional&lt;String&gt; token = usuarioService.logIn(email, password);</span>
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            if (token.isPresent()) {</span>
+<span class="fc" id="L72">            	return new ResponseEntity&lt;&gt;(token.get(), HttpStatus.OK);</span>
+            } else {
+<span class="fc" id="L74">            	return new ResponseEntity&lt;&gt;(HttpStatus.UNAUTHORIZED);</span>
+            }
+<span class="fc" id="L76">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L77">            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();</span>
+<span class="fc" id="L78">        } catch (Exception e) {</span>
+<span class="fc" id="L79">            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();</span>
+        }
+    }
+    
+    @Operation(
+            summary = &quot;Cerrar sesión&quot;,
+            description = &quot;Permite a un usuario cerrar sesión eliminando su token.&quot;,
+            responses = {
+                    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;OK: Sesión cerrada correctamente.&quot;),
+                    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;Unautorized: Invalid token, logout failed.&quot;),
+            }
+    )
+    @PostMapping(&quot;/logout&quot;)
+    public ResponseEntity&lt;Void&gt; cerrarSesion(@RequestParam(&quot;token&quot;) String token) {
+
+<span class="fc" id="L94">        Optional&lt;Boolean&gt; result = usuarioService.logout(token);</span>
+        
+<span class="fc bfc" id="L96" title="All 4 branches covered.">        if (result.isPresent() &amp;&amp; result.get()) {</span>
+<span class="fc" id="L97">            return new ResponseEntity&lt;&gt;(HttpStatus.OK);</span>
+        } else {
+<span class="fc" id="L99">            return new ResponseEntity&lt;&gt;(HttpStatus.UNAUTHORIZED);</span>
+        }
+    }
+    
+    @PutMapping(&quot;/bloquear&quot;)
+    public ResponseEntity&lt;Usuario&gt; bloquearUsuario(@RequestParam(&quot;email&quot;) String email) {
+        try {
+<span class="fc" id="L106">            Usuario usuarioBloqueado = usuarioService.bloquearUsuario(email);</span>
+<span class="fc" id="L107">            return ResponseEntity.ok(usuarioBloqueado);</span>
+<span class="fc" id="L108">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L109">            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();</span>
+<span class="fc" id="L110">        } catch (Exception e) {</span>
+<span class="fc" id="L111">            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();</span>
+        }
+    }
+
+    @PutMapping(&quot;/desbloquear&quot;)
+    public ResponseEntity&lt;Usuario&gt; desbloquearUsuario(@RequestParam(&quot;email&quot;) String email) {
+        try {
+<span class="fc" id="L118">            Usuario usuarioDesbloqueado = usuarioService.desbloquearUsuario(email);</span>
+<span class="fc" id="L119">            return ResponseEntity.ok(usuarioDesbloqueado);</span>
+<span class="fc" id="L120">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L121">            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();</span>
+<span class="fc" id="L122">        } catch (Exception e) {</span>
+<span class="fc" id="L123">            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();</span>
+        }
+    }
+
+    @PutMapping(&quot;/crearadmin&quot;)
+    public ResponseEntity&lt;Usuario&gt; crearAdmin(@RequestParam(&quot;email&quot;) String email) {
+        try {
+<span class="fc" id="L130">            Usuario usuarioRolAdmin = usuarioService.crearAdmin(email);</span>
+<span class="fc" id="L131">            return ResponseEntity.ok(usuarioRolAdmin);</span>
+<span class="fc" id="L132">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L133">            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();</span>
+<span class="fc" id="L134">        } catch (Exception e) {</span>
+<span class="fc" id="L135">            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();</span>
+        }
+    }
+
+    @PutMapping(&quot;/eliminaradmin&quot;)
+    public ResponseEntity&lt;Usuario&gt; eliminarAdmin(@RequestParam(&quot;email&quot;) String email) {
+        try {
+<span class="fc" id="L142">            Usuario usuarioRolCliente = usuarioService.eliminarAdmin(email);</span>
+<span class="fc" id="L143">            return ResponseEntity.ok(usuarioRolCliente);</span>
+<span class="fc" id="L144">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L145">            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();</span>
+<span class="fc" id="L146">        } catch (Exception e) {</span>
+<span class="fc" id="L147">            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();</span>
+        }
+    } 
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

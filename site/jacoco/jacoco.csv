@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+deustocoches,com.deustocoches.client.service,RestTemplateServiceProxy,0,835,0,22,0,163,0,45,0,34
+deustocoches,com.deustocoches.model,TipoRol,0,15,0,0,0,2,0,1,0,1
+deustocoches,com.deustocoches.model,Usuario,0,117,0,0,0,41,0,21,0,21
+deustocoches,com.deustocoches.model,EstadoReserva,0,21,0,0,0,4,0,1,0,1
+deustocoches,com.deustocoches.model,Coche,0,137,0,2,0,44,0,22,0,21
+deustocoches,com.deustocoches.model,Reserva,0,80,0,0,0,28,0,15,0,15
+deustocoches,com.deustocoches.service,CocheService,0,324,0,50,0,65,0,41,0,16
+deustocoches,com.deustocoches.service,ReservaService,0,121,0,2,0,27,0,17,0,16
+deustocoches,com.deustocoches.service,UsuarioService,0,292,0,30,0,69,0,31,0,16
+deustocoches,com.deustocoches,DataInitializer,0,493,2,4,0,52,2,5,0,4
+deustocoches,com.deustocoches.controller,UsuarioController,0,179,0,8,0,49,0,16,0,12
+deustocoches,com.deustocoches.controller,CocheController,11,102,0,2,2,29,0,13,0,12
+deustocoches,com.deustocoches.controller,ReservaController,0,143,1,11,0,33,1,15,0,10

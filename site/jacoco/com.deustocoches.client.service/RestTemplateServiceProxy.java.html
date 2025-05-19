@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RestTemplateServiceProxy.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">deustocoches</a> &gt; <a href="index.source.html" class="el_package">com.deustocoches.client.service</a> &gt; <span class="el_source">RestTemplateServiceProxy.java</span></div><h1>RestTemplateServiceProxy.java</h1><pre class="source lang-java linenums">package com.deustocoches.client.service;
+
+import com.deustocoches.model.Reserva;
+import com.deustocoches.model.Usuario;
+import com.deustocoches.model.Coche;
+
+
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+import java.util.List;
+
+@Service
+public class RestTemplateServiceProxy implements IServiceProxy {
+
+    private final RestTemplate restTemplate;
+
+    @Value(&quot;${api.base.url}&quot;)
+    private String apiBaseUrl;
+
+<span class="fc" id="L27">    public RestTemplateServiceProxy(RestTemplate restTemplate) {</span>
+<span class="fc" id="L28">        this.restTemplate = restTemplate;</span>
+<span class="fc" id="L29">    }</span>
+
+    @PostConstruct
+    public void init() {
+<span class="fc bfc" id="L33" title="All 4 branches covered.">        if (apiBaseUrl == null || apiBaseUrl.contains(&quot;/api.base.url&quot;)) {</span>
+<span class="fc" id="L34">            apiBaseUrl = &quot;http://127.0.0.1:8080/api&quot;;</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        } else if (!apiBaseUrl.endsWith(&quot;/api&quot;)) {</span>
+<span class="fc" id="L36">            apiBaseUrl = apiBaseUrl + &quot;/api&quot;;</span>
+        }
+<span class="fc" id="L38">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    @Override
+    public List&lt;Usuario&gt; listarUsuariosResgistrados() {
+<span class="fc" id="L43">        String url = apiBaseUrl + &quot;/usuario&quot;;</span>
+        try {
+<span class="fc" id="L45">            return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L46">        } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L47">            throw new RuntimeException(&quot;Failed to retrieve users: &quot; + e.getStatusText());</span>
+        }
+    }
+
+    @Override
+    public Usuario getUsuarioByEmail(String email) {
+        try {
+<span class="fc" id="L54">            String url = apiBaseUrl + &quot;/usuario/buscar?email=&quot; + email;</span>
+            
+<span class="fc" id="L56">            ResponseEntity&lt;Usuario&gt; response = restTemplate.getForEntity(url, Usuario.class);</span>
+            
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            if (response.getStatusCode().is2xxSuccessful()) {</span>
+<span class="fc" id="L59">                return response.getBody();</span>
+            }
+<span class="fc" id="L61">            return null;</span>
+<span class="fc" id="L62">        } catch (HttpStatusCodeException e) {</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            if (e.getStatusCode().value() == 404) {</span>
+<span class="fc" id="L64">                return null;</span>
+            }
+<span class="fc" id="L66">            throw new RuntimeException(&quot;Failed to retrieve user by email: &quot; + e.getStatusText());</span>
+        }
+    }
+
+    @Override
+    public void eliminarUsuario(String email) {
+<span class="fc" id="L72">        String url = apiBaseUrl + &quot;/usuario/eliminar?email=&quot; + email;</span>
+        try {
+<span class="fc" id="L74">            restTemplate.delete(url);</span>
+<span class="fc" id="L75">        } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L76">            throw new RuntimeException(&quot;Failed to delete user: &quot; + e.getStatusText());</span>
+<span class="fc" id="L77">        }</span>
+<span class="fc" id="L78">    }</span>
+
+    @Override
+    public Usuario registrarUsuario(Usuario usuario) {
+<span class="fc" id="L82">        String url = apiBaseUrl + &quot;/usuario/registrar&quot;;</span>
+        try {
+<span class="fc" id="L84">            return restTemplate.postForObject(url, usuario, Usuario.class);</span>
+<span class="fc" id="L85">        } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L86">            throw new RuntimeException(&quot;Failed to register user: &quot; + e.getStatusText());</span>
+        }
+    }
+
+    @Override
+    public String login(String email, String password) {
+        try {
+<span class="fc" id="L93">            String url = apiBaseUrl + &quot;/usuario/login?email=&quot; + email + &quot;&amp;password=&quot; + password;</span>
+            
+<span class="fc" id="L95">            ResponseEntity&lt;String&gt; response = restTemplate.postForEntity(</span>
+                url,
+                null,
+                String.class
+            );
+            
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            if (response.getStatusCode().is2xxSuccessful()) {</span>
+<span class="fc" id="L102">                return response.getBody();</span>
+            }
+            
+<span class="fc" id="L105">            throw new RuntimeException(&quot;Login failed: &quot; + response.getStatusCode());</span>
+<span class="fc" id="L106">        } catch (HttpStatusCodeException e) {</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">            if (e.getStatusCode().value() == 400) {</span>
+<span class="fc" id="L108">                return null; </span>
+            }
+<span class="fc" id="L110">            throw new RuntimeException(&quot;Login failed: &quot; + e.getStatusCode());</span>
+        }
+    }
+
+    @Override
+    public void logout(String token) {
+<span class="fc" id="L116">        String url = apiBaseUrl + &quot;/usuario/logout?token=&quot; + token;</span>
+        try {
+<span class="fc" id="L118">            restTemplate.postForObject(url, null, Void.class);</span>
+<span class="fc" id="L119">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L120">        throw new RuntimeException(&quot;Logout failed: &quot; + e.getStatusText());</span>
+<span class="fc" id="L121">    }</span>
+<span class="fc" id="L122">}</span>
+
+@Override
+public Reserva crearReserva(Reserva reserva) {
+<span class="fc" id="L126">    String url = apiBaseUrl + &quot;/reservas/pedidos&quot;;</span>
+    try {
+<span class="fc" id="L128">        return restTemplate.postForObject(url, reserva, Reserva.class);</span>
+<span class="fc" id="L129">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L130">        throw new RuntimeException(&quot;Failed to create reservation: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Reserva actualizarReserva(Integer id, Reserva detallesReserva) {
+<span class="fc" id="L136">    String url = apiBaseUrl + &quot;/reservas/actualizar/&quot; + id;</span>
+    try {
+<span class="fc" id="L138">        return restTemplate.exchange(url, HttpMethod.PUT, new HttpEntity&lt;&gt;(detallesReserva), Reserva.class)</span>
+<span class="fc" id="L139">                .getBody();</span>
+<span class="fc" id="L140">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L141">        throw new RuntimeException(&quot;Failed to update reservation: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public void eliminarReserva(Integer id) {
+<span class="fc" id="L147">    String url = apiBaseUrl + &quot;/reservas/eliminar/&quot; + id;</span>
+    try {
+<span class="fc" id="L149">        restTemplate.delete(url);</span>
+<span class="fc" id="L150">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L151">        throw new RuntimeException(&quot;Failed to delete reservation: &quot; + e.getStatusText());</span>
+<span class="fc" id="L152">    }</span>
+<span class="fc" id="L153">}</span>
+
+@SuppressWarnings(&quot;unchecked&quot;)
+@Override
+public List&lt;Coche&gt; ListarCoches() {
+<span class="fc" id="L158">    String url = apiBaseUrl + &quot;/coche&quot;;</span>
+    try {
+<span class="fc" id="L160">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L161">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L162">        throw new RuntimeException(&quot;Failed to retrieve cars: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Coche getCocheByMatricula(String matricula) {
+<span class="fc" id="L168">    String url = apiBaseUrl + &quot;/coche/buscar?matricula=&quot; + matricula;</span>
+    try {
+<span class="fc" id="L170">        Coche coche = restTemplate.getForObject(url, Coche.class);</span>
+<span class="fc" id="L171">        return coche;</span>
+<span class="fc" id="L172">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L173">        throw new RuntimeException(&quot;Failed to retrieve car by license plate: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Coche crearCoche(Coche coche) {
+<span class="fc" id="L179">    String url = apiBaseUrl + &quot;/coche/crear&quot;;</span>
+    try {
+<span class="fc" id="L181">        return restTemplate.postForObject(url, coche, Coche.class);</span>
+<span class="fc" id="L182">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L183">        throw new RuntimeException(&quot;Failed to create car: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Coche actualizarCoche(String matricula, Coche coche) {
+<span class="fc" id="L189">    String url = apiBaseUrl + &quot;/coche/actualizar?matricula=&quot; + matricula;</span>
+    try {
+<span class="fc" id="L191">        return restTemplate.exchange(url, HttpMethod.PUT, new HttpEntity&lt;&gt;(coche), Coche.class).getBody();</span>
+<span class="fc" id="L192">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L193">        throw new RuntimeException(&quot;Failed to update car: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public void eliminarCoche(String matricula) {
+<span class="fc" id="L199">    String url = apiBaseUrl + &quot;/coche/eliminar?matricula=&quot; + matricula;</span>
+    try {
+<span class="fc" id="L201">        restTemplate.delete(url);</span>
+<span class="fc" id="L202">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L203">        throw new RuntimeException(&quot;Failed to delete car: &quot; + e.getStatusText());</span>
+<span class="fc" id="L204">    }</span>
+<span class="fc" id="L205">}</span>
+
+public List&lt;Coche&gt; filtrarCoches(String marca, String modelo, Double precioMin, Double precioMax) {
+<span class="fc" id="L208">    String url = apiBaseUrl + &quot;/coche/filtrar?&quot;;</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">    if (marca != null) url += &quot;marca=&quot; + marca + &quot;&amp;&quot;;</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">    if (modelo != null) url += &quot;modelo=&quot; + modelo + &quot;&amp;&quot;;</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">    if (precioMin != null) url += &quot;precioMin=&quot; + precioMin + &quot;&amp;&quot;;</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">    if (precioMax != null) url += &quot;precioMax=&quot; + precioMax;</span>
+    
+    try {
+<span class="fc" id="L215">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L216">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L217">        throw new RuntimeException(&quot;Failed to filter cars: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Coche aplicarDescuento(String matricula, Double descuento) {
+<span class="fc" id="L223">    String url = apiBaseUrl + &quot;/coche/aplicarDescuento?matricula=&quot; + matricula + &quot;&amp;descuento=&quot; + descuento;</span>
+    try {
+<span class="fc" id="L225">        return restTemplate.exchange(url, HttpMethod.PUT, null, Coche.class).getBody();</span>
+<span class="fc" id="L226">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L227">        throw new RuntimeException(&quot;Failed to apply discount: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Coche eliminarDescuento(String matricula) {
+<span class="fc" id="L233">    String url = apiBaseUrl + &quot;/coche/eliminarDescuento?matricula=&quot; + matricula;</span>
+    try {
+<span class="fc" id="L235">        return restTemplate.exchange(url, HttpMethod.PUT, null, Coche.class).getBody();</span>
+<span class="fc" id="L236">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L237">        throw new RuntimeException(&quot;Failed to remove discount: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+@Override
+public List&lt;Coche&gt; ListarCochesDisponibles() {
+<span class="fc" id="L244">    String url = apiBaseUrl + &quot;/coche/disponibles&quot;;</span>
+    try {
+<span class="fc" id="L246">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L247">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L248">        throw new RuntimeException(&quot;Failed to retrieve available cars: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Reserva hacerPedido(Reserva reserva) {
+<span class="fc" id="L254">    String url = apiBaseUrl + &quot;/reservas/pedidos&quot;;</span>
+    try {
+<span class="fc" id="L256">        return restTemplate.postForObject(url, reserva, Reserva.class);</span>
+<span class="fc" id="L257">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L258">        throw new RuntimeException(&quot;Failed to create reservation: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public List&lt;Reserva&gt; obtenerReservasPorFecha(String fecha) {
+<span class="fc" id="L264">    String url = apiBaseUrl + &quot;/reservas/filtrar/fecha/&quot; + fecha;</span>
+    try {
+<span class="fc" id="L266">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L267">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L268">        throw new RuntimeException(&quot;Failed to retrieve reservations by date: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Usuario bloquearUsuario(String email) {
+<span class="fc" id="L274">    String url = apiBaseUrl + &quot;/usuario/bloquear?email=&quot; + email;</span>
+    try {
+<span class="fc" id="L276">        return restTemplate.exchange(url, HttpMethod.PUT, null, Usuario.class).getBody();</span>
+<span class="fc" id="L277">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L278">        throw new RuntimeException(&quot;Failed to block user: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Usuario desbloquearUsuario(String email) {
+<span class="fc" id="L284">    String url = apiBaseUrl + &quot;/usuario/desbloquear?email=&quot; + email;</span>
+    try {
+<span class="fc" id="L286">        return restTemplate.exchange(url, HttpMethod.PUT, null, Usuario.class).getBody();</span>
+<span class="fc" id="L287">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L288">        throw new RuntimeException(&quot;Failed to unblock user: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Usuario crearAdmin(String email) {
+<span class="fc" id="L294">    String url = apiBaseUrl + &quot;/usuario/crearadmin?email=&quot; + email;</span>
+    try {
+<span class="fc" id="L296">        return restTemplate.exchange(url, HttpMethod.PUT, null, Usuario.class).getBody();</span>
+<span class="fc" id="L297">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L298">        throw new RuntimeException(&quot;Failed to change user rol: &quot; + e.getStatusText());</span>
+    }
+}
+
+@Override
+public Usuario eliminarAdmin(String email) {
+<span class="fc" id="L304">    String url = apiBaseUrl + &quot;/usuario/eliminaradmin?email=&quot; + email;</span>
+    try {
+<span class="fc" id="L306">        return restTemplate.exchange(url, HttpMethod.PUT, null, Usuario.class).getBody();</span>
+<span class="fc" id="L307">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L308">        throw new RuntimeException(&quot;Failed to change user rol: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public List&lt;Reserva&gt; obtenerReservasConfirmadasPorUsuario(String email) {
+<span class="fc" id="L314">    String url = apiBaseUrl + &quot;/reservas/usuario/confirmadas?email=&quot; + email;</span>
+    try {
+<span class="fc" id="L316">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L317">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L318">        throw new RuntimeException(&quot;Failed to retrieve confirmed reservations by user: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public List&lt;Reserva&gt; obtenerReservasPendientesPorUsuario(String email) {
+<span class="fc" id="L324">    String url = apiBaseUrl + &quot;/reservas/usuario/pendientes?email=&quot; + email;</span>
+    try {
+<span class="fc" id="L326">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L327">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L328">        throw new RuntimeException(&quot;Failed to retrieve pending reservations by user: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public List&lt;Reserva&gt; obtenerReservasCompradas() {
+<span class="fc" id="L334">    String url = apiBaseUrl + &quot;/reservas/compradas&quot;;</span>
+    try {
+<span class="fc" id="L336">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L337">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L338">        throw new RuntimeException(&quot;Failed to retrieve bought reservations: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public List&lt;Reserva&gt; obtenerReservasPendientes() {
+<span class="fc" id="L344">    String url = apiBaseUrl + &quot;/reservas/pendientes&quot;;</span>
+    try {
+<span class="fc" id="L346">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L347">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L348">        throw new RuntimeException(&quot;Failed to retrieve pending reservations: &quot; + e.getStatusText());</span>
+    }
+}
+
+public void metodoQuePuedeLanzarExcepcion() {
+    try {
+<span class="fc" id="L354">        restTemplate.getForObject(apiBaseUrl + &quot;/ejemplo&quot;, String.class);</span>
+<span class="fc" id="L355">    } catch (RestClientException e) {</span>
+<span class="fc" id="L356">        throw new RuntimeException(&quot;Error durante la llamada a la API: &quot; + e.getMessage(), e);</span>
+<span class="fc" id="L357">    }</span>
+<span class="fc" id="L358">}</span>
+
+public List&lt;?&gt; metodoQueDevuelveLista() {
+<span class="fc" id="L361">    String url = apiBaseUrl + &quot;/coleccion&quot;;</span>
+    try {
+<span class="fc" id="L363">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L364">    } catch (RestClientException e) {</span>
+<span class="fc" id="L365">        throw new RuntimeException(&quot;Error al recuperar la lista de elementos: &quot; + e.getMessage(), e);</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public List&lt;Reserva&gt; obtenerReservasPorRangoFechas(String desde, String hasta) {
+<span class="fc" id="L371">    String url = apiBaseUrl + &quot;/reservas/filtrar/rango?desde=&quot; + desde + &quot;&amp;hasta=&quot; + hasta;</span>
+    try {
+<span class="fc" id="L373">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L374">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L375">        throw new RuntimeException(&quot;Failed to retrieve reservations by date range: &quot; + e.getStatusText());</span>
+    }
+}
+
+@SuppressWarnings(&quot;unchecked&quot;)
+@Override
+public List&lt;String&gt; obtenerMarcas() {
+<span class="fc" id="L382">    String url = apiBaseUrl + &quot;/coche/marcas&quot;;</span>
+    try {
+<span class="fc" id="L384">        System.out.println(&quot;Intentando conectar a: &quot; + url);</span>
+<span class="fc" id="L385">        return restTemplate.getForObject(url, List.class);</span>
+<span class="fc" id="L386">    } catch (HttpStatusCodeException e) {</span>
+<span class="fc" id="L387">        System.err.println(&quot;Error HTTP: &quot; + e.getStatusCode() + &quot; - &quot; + e.getStatusText());</span>
+<span class="fc" id="L388">        throw new RuntimeException(&quot;Failed to retrieve brands: &quot; + e.getStatusText());</span>
+    }
+}
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
